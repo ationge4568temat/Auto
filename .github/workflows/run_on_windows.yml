@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: 3.12
           cache: pip
-          pip-install: requirements.txt
+          pip-install: -r requirements.txt
 
       - name: Run
         run: .\tools\cicd_windows.ps1
