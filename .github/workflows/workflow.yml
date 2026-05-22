@@ -26,28 +26,11 @@ jobs:
           ref: main
 
       - name: Run
+        run: ./tools/cicd.sh
         env:
           ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
           DEBIAN_FRONTEND: noninteractive
-        run: |
-          set -e
-          # zip
-          apt-get update && apt-get install -y zip
-          # fonts
-          mkdir -p /usr/share/fonts/windows
-          cp -r test/fonts/* /usr/share/fonts/windows/
-          fc-cache -f
-          # main logic
-          Xvfb :99 -screen 0 1280x800x24 -nolisten tcp &
-          XVFB_PID=$!
-          ./proxy/mihomo-linux-amd64-v3-go123-v1.19.25 -f ./proxy/config.yaml &
-          PROXY_PID=$!
-          trap "kill $XVFB_PID $PROXY_PID" EXIT
-          sleep 2
-          curl -s --socks5 127.0.0.1:10087 https://ip.sb || true
-          curl -s --socks5 127.0.0.1:10087 https://ip.sb || true
-          python -m test.app
-          zip -rq -P "$ZIP_PASSWORD" data.zip test/data
+        shell: bash
 
       - uses: softprops/action-gh-release@v3
         with:
