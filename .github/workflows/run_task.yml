@@ -1,4 +1,4 @@
-name: Run Task On Linux
+name: Run Task
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
           ref: main
 
       - name: Run
-        run: ./tools/cicd_linux.sh
+        run: ./tools/cicd.sh
         env:
           ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
           DEBIAN_FRONTEND: noninteractive
