@@ -1,4 +1,4 @@
-name: Run Task
+name: Run Task On Linux
 
 on:
   push:
