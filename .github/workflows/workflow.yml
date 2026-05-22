@@ -28,6 +28,7 @@ jobs:
       - name: Run
         env:
           ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
+          DEBIAN_FRONTEND: noninteractive
         run: |
           set -e
           # zip
@@ -46,7 +47,7 @@ jobs:
           curl -s --socks5 127.0.0.1:10087 https://ip.sb || true
           curl -s --socks5 127.0.0.1:10087 https://ip.sb || true
           python -m test.app
-          zip -r -P "$ZIP_PASSWORD" data.zip test/data
+          zip -rq -P "$ZIP_PASSWORD" data.zip test/data
 
       - uses: softprops/action-gh-release@v3
         with:
