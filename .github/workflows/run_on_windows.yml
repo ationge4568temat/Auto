@@ -29,10 +29,10 @@ jobs:
           pip-install: requirements.txt
 
       - name: Run
-        run: ./tools/cicd_windows.sh
+        run: .\tools\cicd_windows.ps1
         env:
           ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
-        shell: bash
+        shell: pwsh
 
       - uses: softprops/action-gh-release@v3
         with:
