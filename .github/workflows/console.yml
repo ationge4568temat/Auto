@@ -1,3 +1,51 @@
+name:  Control console
+
+on:
+  # 1. HTTP API 触发 / 手动触发
+  workflow_dispatch:
+    inputs:
+      action_type:
+        description: '执行的操作类型'
+        required: true
+        default: 'action'
+        type: choice
+        options:
+          - action
+          - restart
+
+  # 2. 定时任务触发 (示例：每天 UTC 0点执行)
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  execute-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 确定参数 (Determine Action Type)
+        id: set_parameter
+        run: |
+          if [ "${{ github.event_name }}" == "schedule" ]; then
+            # 如果是定时任务触发，默认设为 "action"
+            echo "PARAM=action" >> $GITHUB_ENV
+          else
+            # 如果是 HTTP/手动触发，读取传入的参数
+            echo "PARAM=${{ github.event.inputs.action_type }}" >> $GITHUB_ENV
+          fi
+
+      - name: 打印与执行 (Execute based on parameter)
+        run: |
+          echo "当前触发方式: ${{ github.event_name }}"
+          echo "当前接收参数: ${{ env.PARAM }}"
+          
+          # 根据参数执行具体逻辑
+          if [ "${{ env.PARAM }}" == "action" ]; then
+            echo "正在执行 action 逻辑..."
+          elif [ "${{ env.PARAM }}" == "restart" ]; then
+            echo "正在执行 restart 逻辑..."
+          fi
+
+
+
 name: Run Task
 
 on:

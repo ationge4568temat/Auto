@@ -1,4 +1,4 @@
-name: Run Task
+name: Control Dashboard
 
 on:
   push:
