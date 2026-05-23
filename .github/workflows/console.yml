@@ -40,8 +40,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "schedule" ]; then
             echo "PARAM=show" >> $GITHUB_ENV
+            echo "TAG=all" >> $GITHUB_ENV
           else
             echo "PARAM=${{ github.event.inputs.action_type }}" >> $GITHUB_ENV
+            echo "TAG=${{ github.event.inputs.tag_name }}" >> $GITHUB_ENV
           fi
 
       - uses: actions/checkout@v6
