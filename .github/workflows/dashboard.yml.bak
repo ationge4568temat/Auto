@@ -1,4 +1,4 @@
-name: Dashboard
+name: Dashboard Controller
 
 on:
   push:
