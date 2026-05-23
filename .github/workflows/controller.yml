@@ -12,7 +12,7 @@ on:
         type: choice
         options:
           - test
-          - task
+          - renew
           - show
           - restart
       tag_name:
