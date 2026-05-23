@@ -43,7 +43,7 @@ jobs:
       image: cloakhq/cloakbrowser
 
     steps:
-      - name: Determine PARAM
+      - name: Determine Param
         run: |
           if [ "${{ github.event_name }}" == "schedule" ]; then
             echo "PARAM=show" >> $GITHUB_ENV
