@@ -18,8 +18,15 @@ on:
       tag_name:
         description: Server Tag (仅用于 show 或 restart)
         required: false
-        type: string
         default: all
+        type: choice
+        options:
+          - all
+          - k-api
+          - k-www
+          - l-www
+          - l-i
+          - h-api
 
 jobs:
   run:
