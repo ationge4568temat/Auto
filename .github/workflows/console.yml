@@ -1,0 +1,39 @@
+name: Run Task
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    container:
+      image: cloakhq/cloakbrowser
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.SOURCE_REPO_PAT }}
+          repository: HEUDavid/AutoAction
+          ref: main
+
+      - name: Run
+        run: ./tools/cicd.sh
+        env:
+          ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
+          DEBIAN_FRONTEND: noninteractive
+        shell: bash
+
+      - uses: softprops/action-gh-release@v3
+        with:
+          name: Latest
+          tag_name: latest
+          files: data.zip
