@@ -1,6 +1,8 @@
 name: Console
 
 on:
+  schedule:
+    - cron: '0 0 */4 * *'
   workflow_dispatch:
     inputs:
       action_type:
@@ -9,10 +11,15 @@ on:
         default: show
         type: choice
         options:
+          - test
+          - task
           - show
           - restart
-  schedule:
-    - cron: '0 0 */4 * *'
+      tag_name:
+        description: Server Tag (仅用于 show 或 restart)
+        required: false
+        type: string
+        default: all
 
 jobs:
   run:
