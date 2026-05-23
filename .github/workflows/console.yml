@@ -1,4 +1,4 @@
-name: Console
+name: Console Controller
 
 on:
   schedule:
