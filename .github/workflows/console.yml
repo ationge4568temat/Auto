@@ -7,7 +7,7 @@ on:
     inputs:
       action_type:
         description: 操作类型
-        required: true
+        required: false
         default: show
         type: choice
         options:
