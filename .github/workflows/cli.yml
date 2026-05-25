@@ -33,6 +33,7 @@ jobs:
   run:
     permissions:
       contents: write
+      workflows: write
     strategy:
       fail-fast: true
       matrix:
