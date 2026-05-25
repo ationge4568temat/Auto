@@ -44,7 +44,7 @@ jobs:
       image: cloakhq/cloakbrowser
 
     steps:
-      - name: Determine Param
+      - name: Determine param
         run: |
           if [ "${{ github.event_name }}" == "schedule" ]; then
             echo "PARAM=show" >> $GITHUB_ENV
@@ -79,7 +79,7 @@ jobs:
 
       - run: python ./tools/set_cron.py
 
-      - name: Commit and Push new schedule
+      - name: Commit and push new schedule
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         working-directory: ./cli
