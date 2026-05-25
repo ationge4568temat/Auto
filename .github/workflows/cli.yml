@@ -1,4 +1,4 @@
-name: Controller
+name: Cli
 
 on:
   schedule:
