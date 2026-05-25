@@ -1,4 +1,4 @@
-name: Cli
+name: CLI
 
 on:
   schedule:
