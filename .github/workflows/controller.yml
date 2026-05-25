@@ -22,11 +22,12 @@ on:
         type: choice
         options:
           - all
-          - k-api
-          - k-www
-          - l-www
-          - l-i
           - h-api
+          - h-www
+          - k-api
+          - k-i
+          - l-api
+          - l-i
 
 jobs:
   run:
