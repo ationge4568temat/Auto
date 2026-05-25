@@ -66,9 +66,21 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
         shell: bash
 
+      - uses: softprops/action-gh-release@v3
+        with:
+          name: Latest
+          tag_name: latest
+          files: data.zip
+
+      - name: Checkout self
+        uses: actions/checkout@v6
+        with:
+          path: cli
+
       - run: python ./tools/set_cron.py
 
       - name: Commit and Push new schedule
+        working-directory: ./cli
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -76,9 +88,3 @@ jobs:
           git commit -m "chore: update schedule to a random time" || echo "No changes to commit"
           git pull --rebase
           git push
-
-      - uses: softprops/action-gh-release@v3
-        with:
-          name: Latest
-          tag_name: latest
-          files: data.zip
