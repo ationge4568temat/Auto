@@ -13,10 +13,11 @@ on:
         options:
           - test
           - renew
+          - schedule
           - show
           - restart
       tag_name:
-        description: Server Tag (仅用于 show 或 restart)
+        description: Server Tag
         required: false
         default: all
         type: choice
