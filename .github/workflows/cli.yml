@@ -87,6 +87,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .github/workflows/cli.yml
-          git commit -m "chore: update schedule to ${{ steps.cron.outputs.next }}" || echo "No changes to commit"
+          git commit -m "next schedule: ${{ steps.cron.outputs.next_schedule }}" || echo "No changes to commit"
           git pull --rebase
           git push
