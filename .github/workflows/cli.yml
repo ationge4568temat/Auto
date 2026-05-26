@@ -45,13 +45,13 @@ jobs:
       image: cloakhq/cloakbrowser
 
     steps:
-      - name: Determine param
+      - name: Determine action
         run: |
           if [ "${{ github.event_name }}" == "schedule" ]; then
-            echo "PARAM=show" >> $GITHUB_ENV
+            echo "ACTION_TYPE=schedule" >> $GITHUB_ENV
             echo "TAG=all" >> $GITHUB_ENV
           else
-            echo "PARAM=${{ github.event.inputs.action_type }}" >> $GITHUB_ENV
+            echo "ACTION_TYPE=${{ github.event.inputs.action_type }}" >> $GITHUB_ENV
             echo "TAG=${{ github.event.inputs.tag_name }}" >> $GITHUB_ENV
           fi
 
