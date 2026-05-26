@@ -27,7 +27,7 @@ on:
           - h-www
           - k-api
           - k-i
-          - l-api
+          - l-www
           - l-i
 
 jobs:
