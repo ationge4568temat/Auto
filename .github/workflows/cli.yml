@@ -8,7 +8,7 @@ on:
       action_type:
         description: 操作类型
         required: false
-        default: show
+        default: schedule
         type: choice
         options:
           - test
@@ -55,8 +55,8 @@ jobs:
         env:
           ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
           DEBIAN_FRONTEND: noninteractive
-          ACTION_TYPE: ${{ github.event.inputs.action_type }}
-          TAG: ${{ github.event.inputs.tag_name }}
+          ACTION_TYPE: ${{ github.event.inputs.action_type || 'schedule' }}
+          TAG: ${{ github.event.inputs.tag_name || 'all' }}
         shell: bash
 
       - uses: softprops/action-gh-release@v3
