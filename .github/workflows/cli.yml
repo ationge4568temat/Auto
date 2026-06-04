@@ -25,8 +25,6 @@ on:
           - all
           - h-api
           - h-www
-          - k-api
-          - k-i
           - l-www
           - l-i
 
