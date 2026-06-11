@@ -51,9 +51,9 @@ jobs:
 
       - run: ./tools/cicd.sh
         env:
-          ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
           DEBIAN_FRONTEND: noninteractive
           PIP_DISABLE_PIP_VERSION_CHECK: 1
+          ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
           ACTION_TYPE: ${{ github.event.inputs.action_type || 'schedule' }}
           TAG: ${{ github.event.inputs.tag_name || 'all' }}
         shell: bash
