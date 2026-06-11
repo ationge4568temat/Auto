@@ -7,7 +7,7 @@ on:
     # Run monthly, at 00:00 on the 1st day of month.
 
 jobs:
-  del_runs:
+  del:
     permissions:
       actions: write
       contents: read
