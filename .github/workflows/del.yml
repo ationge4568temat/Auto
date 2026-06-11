@@ -1,4 +1,5 @@
 name: Delete old workflow
+
 on:
   workflow_dispatch:
   schedule:
@@ -14,4 +15,5 @@ jobs:
     steps:
       - uses: GitRML/delete-workflow-runs@main
         with:
-          retain_days: 10
+          retain_days: 1
+          keep_minimum_runs: 1
