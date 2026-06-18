@@ -45,8 +45,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          token: ${{ secrets.SOURCE_REPO_PAT }}
           repository: HEUDavid/AutoAction
+          token: ${{ secrets.SOURCE_REPO_PAT }}
           ref: main
 
       - run: ./tools/cicd.sh
@@ -69,8 +69,9 @@ jobs:
       - name: Checkout self
         uses: actions/checkout@v6
         with:
-          path: cli
           token: ${{ secrets.MY_GITHUB_TOKEN }}
+          ref: main
+          path: cli
 
       - run: python ./tools/set_cron.py
         id: cron
