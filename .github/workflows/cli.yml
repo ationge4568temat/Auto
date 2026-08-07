@@ -2,7 +2,7 @@ name: CLI
 
 on:
   schedule:
-    - cron: '11 19 * * *'
+    - cron: '1 14 * * *'
   workflow_dispatch:
     inputs:
       action_type:
