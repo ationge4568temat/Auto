@@ -51,7 +51,6 @@ jobs:
 
       - run: ./tools/cicd.sh
         env:
-          CLOAKBROWSER_LICENSE_KEY: cb_67f9fd11ac1544038973a6b5e766be81
           DEBIAN_FRONTEND: noninteractive
           PIP_DISABLE_PIP_VERSION_CHECK: 1
           PIP_NO_CACHE_DIR: 1
