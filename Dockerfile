@@ -1,6 +1,6 @@
 # 精确锁定 0.6.5 镜像层
-#FROM cloakhq/cloakbrowser@sha256:d25e539dd029d899734aa6e2a706ccc7fa4014cc5654dc07cb5afcfe1048c4e9
-FROM cloakhq/cloakbrowser:latest
+FROM cloakhq/cloakbrowser@sha256:d25e539dd029d899734aa6e2a706ccc7fa4014cc5654dc07cb5afcfe1048c4e9
+#FROM cloakhq/cloakbrowser:latest
 
 # 固定缓存路径（仅保留防止被 HOME=/github/home 覆盖的必要变量）
 ENV XDG_CACHE_HOME=/opt/cache \
