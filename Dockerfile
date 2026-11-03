@@ -1,6 +1,6 @@
 # 精确锁定 0.6.5 镜像层
-FROM cloakhq/cloakbrowser@sha256:d25e539dd029d899734aa6e2a706ccc7fa4014cc5654dc07cb5afcfe1048c4e9
-#FROM cloakhq/cloakbrowser:latest
+# FROM cloakhq/cloakbrowser@sha256:d25e539dd029d899734aa6e2a706ccc7fa4014cc5654dc07cb5afcfe1048c4e9
+FROM cloakhq/cloakbrowser:0.6.5
 
 # 固定缓存路径（仅保留防止被 HOME=/github/home 覆盖的必要变量）
 ENV XDG_CACHE_HOME=/opt/cache \
@@ -21,6 +21,5 @@ RUN fc-cache -f
 RUN python /usr/local/bin/fetch-widevine.py --out /root/WidevineCdm && \
     mkdir -p /opt/wheels /opt/cache && \
     pip download "cloakbrowser[geoip]==0.6.5" -d /opt/wheels && \
-    pip install --no-index --find-links=/opt/wheels "cloakbrowser[geoip]==0.6.5"
-
-RUN python -c "from cloakbrowser import binary_info; print(binary_info())"
+    pip install --no-index --find-links=/opt/wheels "cloakbrowser[geoip]==0.6.5" && \
+    python -c "from cloakbrowser import binary_info; print(binary_info())"
