@@ -21,5 +21,6 @@ RUN fc-cache -f
 RUN python /usr/local/bin/fetch-widevine.py --out /root/WidevineCdm && \
     mkdir -p /opt/wheels /opt/cache && \
     pip download "cloakbrowser[geoip]==0.6.5" -d /opt/wheels && \
-    pip install --no-index --find-links=/opt/wheels "cloakbrowser[geoip]==0.6.5" && \
-    python -c "from cloakbrowser import ensure_binary; ensure_binary()"
+    pip install --no-index --find-links=/opt/wheels "cloakbrowser[geoip]==0.6.5"
+
+RUN python -c "from cloakbrowser import ensure_binary; ensure_binary()"
