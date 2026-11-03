@@ -10,7 +10,7 @@ ENV CLOAKBROWSER_CACHE_DIR=/opt/cloakbrowser \
 
 # 1. 预装系统依赖并清理 apt 缓存
 RUN apt-get -qq update && \
-    apt-get install -y -qq --no-install-recommends \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
         zip unzip xauth python3-tk python3-dev git && \
     rm -rf /var/lib/apt/lists/*
 
@@ -23,4 +23,4 @@ RUN python /usr/local/bin/fetch-widevine.py --out /root/WidevineCdm && \
     mkdir -p /opt/wheels /opt/cloakbrowser /opt/cache && \
     pip download "cloakbrowser[geoip]==0.6.5" -d /opt/wheels && \
     pip install --no-index --find-links=/opt/wheels "cloakbrowser[geoip]==0.6.5" && \
-    python3 -c "from cloakbrowser.download import ensure_binary; ensure_binary()"
+    python3 -c "from cloakbrowser import ensure_binary; ensure_binary()"
