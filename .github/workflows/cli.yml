@@ -40,7 +40,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     container:
-      image: cloakhq/cloakbrowser:latest
+      image: cloakhq/cloakbrowser:0.6.5
 
     steps:
       - uses: actions/checkout@v6
