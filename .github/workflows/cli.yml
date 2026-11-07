@@ -38,6 +38,7 @@ jobs:
         os:
           - ubuntu-latest
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
 
     container:
       # image: cloakhq/cloakbrowser:latest
