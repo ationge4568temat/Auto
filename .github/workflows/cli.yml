@@ -45,7 +45,7 @@ jobs:
     timeout-minutes: 15
 
     container:
-      image: cloakhq/cloakbrowser:0.5.12
+      image: cloakhq/cloakbrowser:0.5.11
       # image: ghcr.io/ationge4568temat/cloakbrowser:latest
       # image: cloakhq/cloakbrowser@sha256:d25e539dd029d899734aa6e2a706ccc7fa4014cc5654dc07cb5afcfe1048c4e9
 
