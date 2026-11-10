@@ -5,8 +5,8 @@ concurrency:
   cancel-in-progress: true
 
 on:
-#  schedule:
-#    - cron: '15 14 * * *'
+  schedule:
+    - cron: '15 14 * * *'
   workflow_dispatch:
     inputs:
       action_type:
